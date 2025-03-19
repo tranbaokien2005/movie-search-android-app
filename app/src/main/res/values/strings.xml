@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">assignTwo</string>
+    <string name="omdb_api_key">2f76e37b</string>
+    <string name="search">Search</string>
+    <string name="enter_movie_name">Enter movie name</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="movie_poster_desc">Movie Poster</string>
+</resources>

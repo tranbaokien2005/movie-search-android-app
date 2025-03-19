@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Nút Back -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_media_previous"
+        android:contentDescription="Back"
+        android:background="?attr/selectableItemBackground"
+        android:padding="8dp"
+        android:layout_gravity="start"/>
+
+    <!-- Poster -->
+    <ImageView
+        android:id="@+id/ivPoster"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp" />
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movie Title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp" />
+
+    <!-- Năm phát hành -->
+    <TextView
+        android:id="@+id/tvYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Year"
+        android:textSize="16sp"
+        android:layout_marginTop="5dp" />
+
+    <!-- IMDb Rating -->
+    <TextView
+        android:id="@+id/tvRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rating"
+        android:textSize="16sp"
+        android:layout_marginTop="5dp" />
+
+    <!-- Cốt truyện -->
+    <TextView
+        android:id="@+id/tvPlot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Plot"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp" />
+
+</LinearLayout>
