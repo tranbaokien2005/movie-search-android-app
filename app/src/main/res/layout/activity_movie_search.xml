@@ -5,30 +5,35 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#F5F5F5">
+    android:background="@color/background">
 
+    <!-- Ô nhập tìm kiếm -->
     <EditText
         android:id="@+id/searchEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter movie name..."
-        android:padding="12dp"
+        android:textColor="@color/textPrimary"
+        android:textColorHint="@color/textSecondary"
+        android:background="@drawable/edittext_background"
         android:drawableStart="@android:drawable/ic_menu_search"
         android:drawablePadding="8dp"
+        android:padding="12dp"
         android:textSize="16sp"
-        android:background="@drawable/edittext_background"
         android:layout_marginBottom="12dp" />
 
+    <!-- Nút Search -->
     <Button
         android:id="@+id/searchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Search"
         android:textAllCaps="false"
-        android:backgroundTint="#3F51B5"
-        android:textColor="@android:color/white"
+        android:textColor="@color/colorOnPrimary"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_marginBottom="12dp" />
 
+    <!-- Progress loading -->
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
@@ -37,13 +42,14 @@
         android:visibility="gone"
         android:layout_marginBottom="12dp" />
 
+    <!-- RecyclerView hiển thị kết quả -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="@android:color/white"
-        android:padding="8dp"
         android:clipToPadding="false"
-        android:scrollbars="vertical" />
+        android:scrollbars="vertical"
+        android:padding="8dp"
+        android:background="@color/background" />
 </LinearLayout>
