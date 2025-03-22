@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Đảm bảo `MovieDetailsActivity` được khai báo -->
         <activity android:name=".ui.MovieDetailsActivity"
             android:exported="true" />
     </application>

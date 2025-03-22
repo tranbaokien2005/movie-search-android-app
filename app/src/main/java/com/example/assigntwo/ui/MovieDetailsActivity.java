@@ -2,76 +2,59 @@ package com.example.assigntwo.ui;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.assigntwo.R;
-import com.example.assigntwo.model.Movie;
-import com.example.assigntwo.network.MovieApiService;
-import com.example.assigntwo.network.RetrofitClient;
-import com.example.assigntwo.BuildConfig;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.assigntwo.databinding.ActivityMovieDetailsBinding;
+import com.example.assigntwo.viewmodel.MovieDetailsViewModel;
 
 public class MovieDetailsActivity extends AppCompatActivity {
-    private ImageView posterImageView;
-    private TextView titleTextView, yearTextView, ratingTextView, plotTextView;
-    private ImageButton btnBack;
+    private ActivityMovieDetailsBinding binding;
+    private MovieDetailsViewModel movieDetailsViewModel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_details);
+        binding = ActivityMovieDetailsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        // Ánh xạ View từ XML
-        btnBack = findViewById(R.id.btnBack);
-        posterImageView = findViewById(R.id.ivPoster);
-        titleTextView = findViewById(R.id.tvTitle);
-        yearTextView = findViewById(R.id.tvYear);
-        ratingTextView = findViewById(R.id.tvRating);
-        plotTextView = findViewById(R.id.tvPlot);
+        // Khởi tạo ViewModel
+        movieDetailsViewModel = new ViewModelProvider(this).get(MovieDetailsViewModel.class);
 
         // Xử lý sự kiện bấm nút Back
-        btnBack.setOnClickListener(v -> finish());
+        binding.btnBack.setOnClickListener(v -> finish());
 
         // Nhận IMDb ID từ Intent
         String imdbID = getIntent().getStringExtra("imdbID");
         if (imdbID != null) {
-            fetchMovieDetails(imdbID);
+            movieDetailsViewModel.fetchMovieDetails(imdbID);
+        } else {
+            Toast.makeText(this, "Movie ID not found!", Toast.LENGTH_SHORT).show();
+            finish();
         }
-    }
 
-    private void fetchMovieDetails(String imdbID) {
-        MovieApiService apiService = RetrofitClient.getRetrofitInstance().create(MovieApiService.class);
-        apiService.getMovieDetails(BuildConfig.OMDB_API_KEY, imdbID).enqueue(new Callback<Movie>() {
-            @Override
-            public void onResponse(Call<Movie> call, Response<Movie> response) {
-                if (response.isSuccessful() && response.body() != null) {
-                    Movie movie = response.body();
-                    titleTextView.setText(movie.getTitle());
-                    yearTextView.setText(movie.getYear());
-                    ratingTextView.setText("IMDb: " + movie.getRating());
-                    plotTextView.setText(movie.getPlot());
+        movieDetailsViewModel.getMovie().observe(this, movie -> {
+            if (movie != null) {
+                binding.tvTitle.setText(movie.getTitle());
+                binding.tvYear.setText(movie.getYear());
+                binding.tvRating.setText("IMDb: " + movie.getRating());
+                binding.tvPlot.setText(movie.getPlot());
 
-                    Glide.with(MovieDetailsActivity.this)
-                            .load(movie.getPosterUrl())
-                            .placeholder(R.drawable.placeholder)
-                            .error(R.drawable.error_image)
-                            .into(posterImageView);
-                }
+                Glide.with(this)
+                        .load(movie.getPosterUrl())
+                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.error_image)
+                        .into(binding.ivPoster);
             }
+        });
 
-            @Override
-            public void onFailure(Call<Movie> call, Throwable t) {
-                t.printStackTrace();
-            }
+        movieDetailsViewModel.getIsLoading().observe(this, isLoading -> {
+            binding.progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
         });
     }
 }

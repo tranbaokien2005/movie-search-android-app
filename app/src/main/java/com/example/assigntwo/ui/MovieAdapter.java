@@ -24,7 +24,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public MovieAdapter(Context context, List<Movie> movieList) {
         this.context = context;
-        this.movieList = new ArrayList<>(movieList); // ✅ Khởi tạo danh sách để tránh lỗi NullPointerException
+        this.movieList = new ArrayList<>(movieList);
     }
 
     @NonNull
@@ -38,19 +38,19 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         Movie movie = movieList.get(position);
 
-        // Hiển thị thông tin phim
+        // Display movie's details
         holder.titleTextView.setText(movie.getTitle());
         holder.yearTextView.setText(movie.getYear());
-        holder.studioTextView.setText("Studio: " + movie.getStudio()); // ✅ Hiển thị studio
+        holder.studioTextView.setText("Studio: " + movie.getStudio());
 
-        // Hiển thị poster với Glide
+
         Glide.with(holder.posterImageView.getContext())
                 .load(movie.getPosterUrl())
-                .placeholder(R.drawable.placeholder) // Hình ảnh chờ khi tải
-                .error(R.drawable.error_image) // Hình ảnh lỗi
+                .placeholder(R.drawable.placeholder)
+                .error(R.drawable.error_image)
                 .into(holder.posterImageView);
 
-        // Xử lý sự kiện click vào phim
+
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, MovieDetailsActivity.class);
             intent.putExtra("imdbID", movie.getImdbID());
@@ -63,7 +63,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return movieList.size();
     }
 
-    // ✅ Thêm phương thức updateMovies() để cập nhật danh sách phim
+
     public void updateMovies(List<Movie> newMovies) {
         movieList.clear();
         movieList.addAll(newMovies);
@@ -71,14 +71,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     }
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, yearTextView, studioTextView; // ✅ Đảm bảo TextView studio tồn tại
+        TextView titleTextView, yearTextView, studioTextView;
         ImageView posterImageView;
 
         public MovieViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.movieTitle);
             yearTextView = itemView.findViewById(R.id.movieYear);
-            studioTextView = itemView.findViewById(R.id.movieStudio); // ✅ Đảm bảo item_movie.xml có id này
+            studioTextView = itemView.findViewById(R.id.movieStudio);
             posterImageView = itemView.findViewById(R.id.moviePoster);
         }
     }

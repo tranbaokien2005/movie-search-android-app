@@ -2,71 +2,56 @@ package com.example.assigntwo.ui;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.assigntwo.BuildConfig;
-import com.example.assigntwo.R;
-import com.example.assigntwo.model.MovieResponse;
-import com.example.assigntwo.network.MovieApiService;
-import com.example.assigntwo.network.RetrofitClient;
+import com.example.assigntwo.databinding.ActivityMovieSearchBinding;
+import com.example.assigntwo.viewmodel.MovieViewModel;
+import com.example.assigntwo.model.Movie;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MovieSearchActivity extends AppCompatActivity {
-    private EditText searchEditText;
-    private Button searchButton;
-    private ProgressBar progressBar;
-    private RecyclerView recyclerView;
+    private ActivityMovieSearchBinding binding;
+    private MovieViewModel movieViewModel;
     private MovieAdapter movieAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie_search);
+        binding = ActivityMovieSearchBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        searchEditText = findViewById(R.id.searchEditText);
-        searchButton = findViewById(R.id.searchButton);
-        progressBar = findViewById(R.id.progressBar);
-        recyclerView = findViewById(R.id.recyclerView);
+        movieViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
 
         movieAdapter = new MovieAdapter(this, new ArrayList<>());
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(movieAdapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerView.setAdapter(movieAdapter);
 
-        searchButton.setOnClickListener(v -> {
-            String query = searchEditText.getText().toString().trim();
+        binding.searchButton.setOnClickListener(v -> {
+            String query = binding.searchEditText.getText().toString().trim();
             if (!query.isEmpty()) {
-                searchMovies(query);
+                movieViewModel.searchMovies(query);
+            } else {
+                Toast.makeText(this, "Please enter a movie name", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        movieViewModel.getMovies().observe(this, this::updateUI);
+        movieViewModel.getIsLoading().observe(this, isLoading -> {
+            binding.progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);
         });
     }
 
-    private void searchMovies(String query) {
-        progressBar.setVisibility(View.VISIBLE);
-        MovieApiService apiService = RetrofitClient.getRetrofitInstance().create(MovieApiService.class);
-        apiService.searchMovies(BuildConfig.OMDB_API_KEY, query).enqueue(new Callback<MovieResponse>() {
-            @Override
-            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                progressBar.setVisibility(View.GONE);
-                if (response.isSuccessful() && response.body() != null) {
-                    movieAdapter.updateMovies(response.body().getMovies());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<MovieResponse> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-            }
-        });
+    private void updateUI(List<Movie> movies) {
+        if (movies.isEmpty()) {
+            Toast.makeText(this, "No movies found!", Toast.LENGTH_SHORT).show();
+        }
+        movieAdapter.updateMovies(movies);
     }
 }

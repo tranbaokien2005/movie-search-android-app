@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Nút Back -->
+    <!-- Back -->
     <ImageButton
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="10dp" />
 
-    <!-- Tiêu đề -->
+    <!-- Title -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
         android:textStyle="bold"
         android:layout_marginTop="10dp" />
 
-    <!-- Năm phát hành -->
+    <!-- Released year -->
     <TextView
         android:id="@+id/tvYear"
         android:layout_width="wrap_content"
@@ -53,7 +53,7 @@
         android:textSize="16sp"
         android:layout_marginTop="5dp" />
 
-    <!-- Cốt truyện -->
+    <!-- Plot -->
     <TextView
         android:id="@+id/tvPlot"
         android:layout_width="match_parent"
@@ -61,5 +61,14 @@
         android:text="Plot"
         android:textSize="14sp"
         android:layout_marginTop="10dp" />
+
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        style="?android:attr/progressBarStyleLarge"
+        android:visibility="gone"/>
 
 </LinearLayout>

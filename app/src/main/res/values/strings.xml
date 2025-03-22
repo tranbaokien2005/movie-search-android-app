@@ -5,4 +5,5 @@
     <string name="enter_movie_name">Enter movie name</string>
     <string name="movie_poster">Movie Poster</string>
     <string name="movie_poster_desc">Movie Poster</string>
+
 </resources>

@@ -21,7 +21,7 @@ public class Movie {
     @SerializedName("imdbRating")
     private String rating;
 
-    @SerializedName("Production")  // 👈 Thêm trường dữ liệu Studio
+    @SerializedName("Production")
     private String studio;
 
     public String getTitle() {
@@ -41,14 +41,14 @@ public class Movie {
     }
 
     public String getPlot() {
-        return plot != null ? plot : "Plot not available"; // Tránh null
+        return plot != null ? plot : "Plot not available"; // Avoid null
     }
 
     public String getRating() {
-        return rating != null ? rating : "N/A"; // Tránh null
+        return rating != null ? rating : "N/A";
     }
 
-    public String getStudio() {  // 👈 Thêm phương thức getStudio()
+    public String getStudio() {
         return studio != null ? studio : "Unknown Studio";
     }
 }
