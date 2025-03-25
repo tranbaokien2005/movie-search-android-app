@@ -31,10 +31,10 @@ An Android app for searching movies using the OMDB API. Built using **MVVM Archi
 ## 📸 Screenshots
 
 ### 🔍 Movie Search Screen  
-![Search Screen](https://github.com/user-attachments/assets/22d33935-6333-42cd-86f5-44420530528f)
+![Search Screen](https://github.com/user-attachments/assets/776d2011-9a7e-424f-aaaf-7cad9ebdec09)
 
 ### 🎬 Movie Details Screen  
-![Details Screen](https://github.com/user-attachments/assets/d5716416-6422-4b09-b2dc-9fdd3b12e8e2)
+![Details Screen](https://github.com/user-attachments/assets/f97bd13c-64b6-46a2-84d2-68f443572dcd)
 
 ---
 
