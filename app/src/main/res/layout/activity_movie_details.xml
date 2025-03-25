@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Nút quay lại -->
         <ImageButton
             android:id="@+id/btnBack"
             android:layout_width="40dp"
@@ -25,7 +24,6 @@
 
 
 
-        <!-- Poster với bo góc + shadow -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +42,6 @@
                 android:contentDescription="Movie Poster" />
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Tiêu đề -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -55,7 +52,6 @@
             android:textStyle="bold"
             android:layout_marginBottom="4dp" />
 
-        <!-- Năm phát hành -->
         <TextView
             android:id="@+id/tvYear"
             android:layout_width="wrap_content"
@@ -64,7 +60,6 @@
             android:textColor="@color/textSecondary"
             android:textSize="14sp" />
 
-        <!-- IMDb -->
         <TextView
             android:id="@+id/tvRating"
             android:layout_width="wrap_content"
@@ -74,7 +69,6 @@
             android:textSize="14sp"
             android:layout_marginBottom="12dp" />
 
-        <!-- Nội dung phim -->
         <TextView
             android:id="@+id/tvPlot"
             android:layout_width="match_parent"
@@ -84,7 +78,6 @@
             android:textSize="15sp"
             android:lineSpacingExtra="6dp" />
 
-        <!-- ProgressBar -->
         <ProgressBar
             android:id="@+id/progressBar"
             style="?android:attr/progressBarStyle"
