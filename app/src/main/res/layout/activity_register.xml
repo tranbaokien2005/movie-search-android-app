@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- Title -->
+<TextView
+android:text="Movie App"
+android:textSize="44sp"
+android:textStyle="bold"
+android:textColor="@color/white"
+android:layout_marginBottom="32dp"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" />
+
+    <!-- Email -->
+<EditText
+android:id="@+id/etEmail"
+android:hint="Email"
+android:inputType="textEmailAddress"
+android:textColor="@color/white"
+android:textColorHint="@color/textSecondary"
+android:backgroundTint="@color/white"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+    <!-- Password -->
+<EditText
+android:id="@+id/etPassword"
+android:hint="Password"
+android:inputType="textPassword"
+android:textColor="@color/white"
+android:textColorHint="@color/textSecondary"
+android:backgroundTint="@color/white"
+android:layout_marginTop="16dp"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+    <!-- Confirm Password -->
+<EditText
+android:id="@+id/etConfirmPassword"
+android:hint="Confirm Password"
+android:inputType="textPassword"
+android:textColor="@color/white"
+android:textColorHint="@color/textSecondary"
+android:backgroundTint="@color/white"
+android:layout_marginTop="16dp"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+    <!-- Register -->
+<Button
+android:id="@+id/btnRegister"
+android:text="Register"
+android:textColor="@color/white"
+android:background="@drawable/rounded_button"
+android:layout_marginTop="24dp"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+    <!-- Cancel -->
+<Button
+android:id="@+id/btnCancel"
+android:text="Cancel"
+android:textColor="@color/white"
+android:background="@drawable/rounded_button"
+android:layout_marginTop="12dp"
+android:layout_width="match_parent"
+android:layout_height="wrap_content" />
+
+    <!-- Footer -->
+<TextView
+android:text="© KEN"
+android:textColor="@color/white"
+android:textSize="16sp"
+android:layout_marginTop="40dp"
+android:layout_gravity="center_horizontal"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content" />
+    </LinearLayout>

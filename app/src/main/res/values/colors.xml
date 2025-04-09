@@ -1,11 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Primary Theme Colors -->
     <color name="colorPrimary">#D32F2F</color>
     <color name="colorOnPrimary">#FFFFFF</color>
 
+    <!-- Background & Surface -->
     <color name="background">#121212</color>
     <color name="cardBackground">#1E1E1E</color>
 
+    <!-- Text Colors -->
     <color name="textPrimary">#FFFFFF</color>
     <color name="textSecondary">#BDBDBD</color>
     <color name="white">#FFFFFF</color>
+
+    <!-- ✅ Fix thiếu màu gây lỗi build -->
+    <color name="red">#F44336</color>
 </resources>

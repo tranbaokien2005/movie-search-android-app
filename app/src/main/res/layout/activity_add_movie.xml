@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:text="Add New Movie"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Các EditText -->
+        <EditText
+            android:id="@+id/etTitle"
+            android:hint="Movie Title"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textSecondary"
+            android:backgroundTint="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/etYear"
+            android:hint="Year"
+            android:inputType="number"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textSecondary"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/etStudio"
+            android:hint="Studio"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textSecondary"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/etPosterUrl"
+            android:hint="Poster URL"
+            android:inputType="textUri"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textSecondary"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/etRating"
+            android:hint="Rating (e.g., 8.5)"
+            android:inputType="numberDecimal"
+            android:textColor="@color/white"
+            android:textColorHint="@color/textSecondary"
+            android:backgroundTint="@color/white"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Nút Save -->
+        <Button
+            android:id="@+id/btnSaveMovie"
+            android:text="Save Movie"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- ✅ Nút Cancel -->
+        <Button
+            android:id="@+id/btnCancel"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Footer -->
+        <TextView
+            android:text="© KEN"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>

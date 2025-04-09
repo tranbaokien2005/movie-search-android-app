@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Cho phép truy cập Internet (Firestore, API...) -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -13,8 +14,9 @@
         android:theme="@style/Theme.AssignTwo"
         tools:targetApi="31">
 
+        <!-- Màn hình Login -->
         <activity
-            android:name=".ui.MovieSearchActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +24,36 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.MovieDetailsActivity"
+        <!-- Màn hình Đăng ký -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+
+        <!-- Màn hình Tìm kiếm phim -->
+        <activity
+            android:name=".ui.MovieSearchActivity"
             android:exported="true" />
+
+        <!-- Màn hình Chi tiết phim -->
+        <activity
+            android:name=".ui.MovieDetailsActivity"
+            android:exported="true" />
+
+        <!-- Màn hình Danh sách phim yêu thích -->
+        <activity
+            android:name=".ui.FavoriteMovieListActivity"
+            android:exported="true" />
+
+        <!-- Màn hình Thêm phim -->
+        <activity
+            android:name=".ui.AddMovieActivity"
+            android:exported="true" />
+
+        <!-- ✅ Màn hình Chỉnh sửa phim -->
+        <activity
+            android:name=".ui.EditMovieActivity"
+            android:exported="true" />
+
     </application>
+
 </manifest>
